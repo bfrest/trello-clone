@@ -1,0 +1,7 @@
+{
+  "editor.lightbulb.enabled": false,
+  "editor.tabSize": 2,
+  "prettier.disableLanguages": [
+    "javascript"
+  ]
+}
