@@ -23,23 +23,23 @@ function App() {
 	};
 
 	const addItem = column => {
-    let copyOfState = {};
+		let copyOfState = {};
 		// copying state to modify it
 		Object.assign(copyOfState, items);
-    let itemToAdd = prompt('New Item');
-    
-    // check if the item already exists
-    let arraysToCheck = Object.values(copyOfState);
-    if (
+		let itemToAdd = prompt('New Item');
+
+		// check if the item already exists
+		let arraysToCheck = Object.values(copyOfState);
+		if (
 			arraysToCheck[0].includes(itemToAdd) ||
-      arraysToCheck[1].includes(itemToAdd) ||
-      arraysToCheck[2].includes(itemToAdd) ||
-      arraysToCheck[3].includes(itemToAdd)
+			arraysToCheck[1].includes(itemToAdd) ||
+			arraysToCheck[2].includes(itemToAdd) ||
+			arraysToCheck[3].includes(itemToAdd)
 		) {
-      return;
-    }
-			// adds new item to the correct array
-			copyOfState[column].push(itemToAdd);
+			return;
+		}
+		// adds new item to the correct array
+		copyOfState[column].push(itemToAdd);
 		// sets new state
 		setItems(copyOfState);
 	};
@@ -54,7 +54,9 @@ function App() {
 				{items.backlog.map(item => (
 					<div className='item'>
 						<p>{item}</p>
-						<button onClick={() => handleChangeColumn(item, 'backlog', 'todo')}>{`>`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'backlog', 'todo')}
+						>{`>`}</button>
 					</div>
 				))}
 			</div>
@@ -62,13 +64,17 @@ function App() {
 			<div className='todo column'>
 				<h2>To do</h2>
 				<button onClick={() => addItem('todo')}>+ Add an item</button>
-				
-        {/* diplays each item of the specific array */}
+
+				{/* diplays each item of the specific array */}
 				{items.todo.map(item => (
 					<div className='item'>
-						<button onClick={() => handleChangeColumn(item, 'todo', 'backlog')}>{`<`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'todo', 'backlog')}
+						>{`<`}</button>
 						<p>{item}</p>
-						<button onClick={() => handleChangeColumn(item, 'todo', 'progress')}>{`>`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'todo', 'progress')}
+						>{`>`}</button>
 					</div>
 				))}
 			</div>
@@ -80,9 +86,13 @@ function App() {
 				{/* diplays each item of the specific array */}
 				{items.progress.map(item => (
 					<div className='item'>
-						<button onClick={() => handleChangeColumn(item, 'progress', 'todo')}>{`<`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'progress', 'todo')}
+						>{`<`}</button>
 						<p>{item}</p>
-						<button onClick={() => handleChangeColumn(item, 'progress', 'complete')}>{`>`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'progress', 'complete')}
+						>{`>`}</button>
 					</div>
 				))}
 			</div>
@@ -94,7 +104,9 @@ function App() {
 				{/*diplays each item of the specific array  */}
 				{items.complete.map(item => (
 					<div className='item'>
-						<button onClick={() => handleChangeColumn(item, 'complete', 'progress')}>{`<`}</button>
+						<button
+							onClick={() => handleChangeColumn(item, 'complete', 'progress')}
+						>{`<`}</button>
 						<p>{item}</p>
 					</div>
 				))}
